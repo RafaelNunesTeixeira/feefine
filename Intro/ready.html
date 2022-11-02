@@ -1,0 +1,61 @@
+ {{ block title }}{{ endblock }}
+
+{{ block content }}
+
+        <div class="card bg-light m-3">
+            <center> <img src="{{ static 'global/uva-logo.png' }}"/> </center>
+            <br>
+
+        <div class="card-body">
+
+
+
+
+            <div class="card bg-light m-3">
+        <div class="card-body">
+         <center>  <p> <h3> You are ready to start. Click 'next' to start the task. </h3></p> </center>
+        </div>
+
+        </div>
+        </div>
+              <center>
+    {{ next_button }}
+</center>
+        </div>
+
+
+
+<div>
+
+    <br>
+
+
+    <div id="inst2" style="display: none">
+            {{ include Constants.contact }}
+    </div>
+
+{{ endblock }}
+
+{{ block script}}
+<script>
+function show() {
+  var x = document.getElementById("inst");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+function show2() {
+  var x = document.getElementById("inst2");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+</script>
+
+{{endblock}}
+
+

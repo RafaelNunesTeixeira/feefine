@@ -1,0 +1,20 @@
+{{ block title }}
+Survey - Part 6 of 7
+{{ endblock }}
+
+{{ block content }}
+
+<p>
+    Answer the following questions:
+</p>
+
+    {{ for field in form }}
+        {{ field.label }}
+        {{ field }}
+<br>
+        {{ endfor }}
+
+<center>
+{{ next_button }}
+</center>
+{{ endblock }}

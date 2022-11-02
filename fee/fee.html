@@ -1,0 +1,75 @@
+
+        {{ block title }}Information{{ endblock }}
+
+{{ block content }}
+        <div class="card bg-light m-3">
+        <div class="card-body">
+    <p>
+    <strong>Instructions:</strong>
+</p>
+
+<p>
+In the next rounds, you need to pay 100 points to <strong>'Take'</strong> points from Individual 2.
+    </p>
+
+    <p>
+That is, you have to pay 100 points if you want to take any amount other than 0 from Individual 2.
+    </p>
+    <p>
+        You have to pay the amount before you decide how much to take from Individual 2, and you can not take any amount if you do not pay 100 points.
+    </p>
+
+</div>
+</div>
+  <center>
+    {{ next_button }}
+</center>
+
+
+<div>
+    <center> <button type="button" onclick="show()">
+    Instructions
+</button>
+</center>
+    <div id="inst" style="display: none">
+    {{ include Constants.instructions_template }}
+    </div>
+    <br>
+    <br>
+</div>
+        <center>
+        <button type="button" onclick="show2()">
+    Contact
+</button>
+</center>
+    <div id="inst2" style="display: none">
+            {{ include Constants.contact }}
+    </div>
+
+{{ endblock }}
+
+{{block script}}
+<script>
+
+function show() {
+  var x = document.getElementById("inst");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+function show2() {
+  var x = document.getElementById("inst2");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+</script>
+
+
+{{ endblock }}
+
+

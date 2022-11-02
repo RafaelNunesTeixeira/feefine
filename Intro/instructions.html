@@ -1,0 +1,139 @@
+
+{% load otree %}
+
+<style>
+    table {
+          table-layout: fixed ;
+          width: 100% ;
+        }
+     th {
+      width: 20%
+        text-align: center;
+        vertical-align: middle;
+      }
+        td {
+            text-align: center;
+            vertical-align: middle;
+            }
+        tr {
+        text-align: center;
+        vertical-align: middle;
+        }
+
+.slidecontainer {
+  width: 100%;
+}
+
+
+.slider {
+   margin: auto;
+  -webkit-appearance: none;
+  width: 80%;
+  height: 15px;
+  border-radius: 5px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+  display: flex
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #0736f0;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #0736f0;
+  cursor: pointer;
+}
+</style>
+<div>
+<h2><strong style="text-align: justify;">Task Instructions:</strong></h2>
+<div class="card bg-light instructions">
+<div class="card-body">
+    <p style="text-align: justify;">You will be randomly and anonymously paired with another participant. One of you will be Individual 1 and the other Individual 2.</p>
+
+    <p style="text-align: justify;">In each round, each participant starts with an <strong>initial allocation</strong> of points. Individual 1 has the opportunity to&nbsp;<strong>Take</strong> points from Individual 2.</p>
+
+    <p style="text-align: justify;">The experiment has 20 rounds.&nbsp;<strong>Please pay attention</strong>: every round is different! The <strong>initial allocation</strong> change in every round.</p>
+
+    <p style="text-align: justify;">This information will be provided by boxes similar to those below:</p>
+<br>
+
+<br>
+      {{ include Constants.example }}
+<br>
+
+<br>
+
+    <p style="text-align: justify;">In this example, Individual 1 starts with&nbsp;300 points, Individual 2 starts with&nbsp;700 points.</p>
+
+    <p style="text-align: justify;">All participants will answer the questions as if they all are Individual 1.&nbsp;However, your payment will be determined by a randomized role and round. At the end of the experiment, you will be informed about which round will be paid and whether you will be paid Individual 1’s or Individual 2’s earnings..</p>
+
+    <p style="text-align: justify;">To illustrate this, if round 10 is randomly selected and you are randomly assigned to the role of Individual 1, then you and the other participant are paid based on your choices in round 10. If you are randomly assigned to the role of Individual 2, then you and the other participant are paid based on the choices of the other participant in round 10.</p>
+
+
+    <p style="text-align: justify;">To decide how much you are going to take, you will use a scroll bar like this one:</p>
+
+
+
+    <div>
+        <center>
+
+
+        <input type="range" name="give" min="0" step="10" max="700" oninput="updateDescriptionintro(this)"   class="slider">
+
+            <p id="descriptionintro"> You start with: 300 </p>
+            <p id="descriptionintro2"> Participant 2 starts with: 700 </p>
+        </center>
+        </div>
+
+</div>
+<br>
+
+<p style="text-align: justify;">Please, move the scroll bar and check how the earnings of you and the other participant change.</p>
+<p style="text-align: justify;">Before the start of the experiment, there will be a small test to check if you understand the task and interface. You are only able to start the experiment after answering those questions correctly.&nbsp;</p>
+<p style="text-align: justify;">At the end of the experiment, there will be some additional questions. You can possibly earn extra points with those questions. Further instructions will be provided.</p>
+</div>
+</div>
+
+
+<div class="card bg-light m-3">
+    <div class="card-body">
+        <p><strong>Earnings: </strong>In the task, you can earn points. The points you earn will be converted in Pounds at the rate</p>
+        <p><center><strong>200 points = 1.00 Pounds.</strong></center></p>
+        <p>Your extra earnings will be transferred to your in a couple of days after the end of the experiment.</p>
+    </div>
+ </div>
+</div>
+<script>
+    let descriptionintro = document.getElementById('descriptionintro');
+     let descriptionintro2 = document.getElementById('descriptionintro2');
+    function updateDescriptionintro(input) {
+        let keep = 300 + parseInt(input.value);
+        let take = parseInt(input.value);
+        let give = 1000 - keep;
+        descriptionintro.innerText = `You are taking ${take} points, keeping a total of: ${keep} points`
+        descriptionintro2.innerText = `Participant 2 is keeping: ${give} points`
+    }
+</script>
+{% block scripts %}
+
+
+
+{% endblock %}
+ </div>

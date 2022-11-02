@@ -1,0 +1,80 @@
+
+        {{ block title }}Instructions{{ endblock }}
+
+{{ block content }}
+        <div class="card bg-light m-3">
+        <div class="card-body">
+    <p>
+    <strong>Expectations:</strong>
+</p>
+
+<p>
+For this task, we want to understand your expectations of the other participants.
+    </p>
+
+    <p>
+You will evaluate various situations that were part of the initial task. <strong>Your goal is to guess how the other participants perceived the situation.</strong> </p>
+
+            <p> Several cases will be presented. For each case, you have to evaluate participant's entitlement associated to each behavior, from <strong>"no entitled" (1)</strong> to <strong>“completely entitled” (5)</strong>.</p>
+
+            <p>A participant is entitled of their action if people perceive them as having the right to act in such way. </p>
+
+            <p> The closer your guess is to the average opinion of the other participants, the greater your gain.</p>
+            <p> <strong> You can earn up to 100 points</strong>. 50 points are subtracted from each point your guess is away from the actual number (at most 100 points are subtracted). </p>
+
+            <p>
+            One case will be randomly drawn for actual payment.
+            </p>
+</div>
+</div>
+  <center>
+    {{ next_button }}
+</center>
+
+
+<div>
+    <center> <button type="button" onclick="show()">
+    Instructions
+</button>
+</center>
+    <div id="inst" style="display: none">
+    {{ include Constants.instructions_template }}
+    </div>
+    <br>
+    <br>
+</div>
+        <center>
+        <button type="button" onclick="show2()">
+    Contact
+</button>
+</center>
+    <div id="inst2" style="display: none">
+            {{ include Constants.contact }}
+    </div>
+
+{{ endblock }}
+
+{{block script}}
+<script>
+function show() {
+  var x = document.getElementById("inst");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+function show2() {
+  var x = document.getElementById("inst2");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+</script>
+
+
+{{ endblock }}
+
+

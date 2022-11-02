@@ -1,0 +1,188 @@
+
+{{ block style }}
+    <style>
+        td {
+            text-align: center;
+            vertical-align: middle;
+            display: flex;
+            }
+        tr {
+        text-align: center;
+        vertical-align: middle;
+        display: flex;
+        }
+
+    </style>
+
+{{ endblock }}
+
+{% block title %}
+    Make your guess
+{% endblock %}
+
+{% block content %}
+
+     <div class="card bg-light m-3">
+        <div class="card-body">
+
+Consider someone taking the role of Participant 1 in the following case:
+<br>
+            <br>
+{% include Constants.case %}
+<br>
+
+{{ if case < 4 }}
+<br>
+{% include Constants.info %}
+<br>
+{{else}}
+{{ endif }}
+
+
+
+<h3>According to the other participants:</h3>
+     <div class="card bg-light m-3">
+       <center> <h4> How appropriate is to take points in this situation?</h4></center>
+         <div class="form-group required">
+    <table class="table table-hover table-striped table-responsive mx-auto ">
+        <thead>
+
+
+            <tr>
+                <th>"Very Socially Inappropriate"</th>
+                <th>“Somewhat Socially Inappropriate”</th>
+                <th> "Neutral"</th>
+                <th>“Somewhat Socially Appropriate”</th>
+                <th>“Very Socially Appropriate”</th>
+            </tr>
+    </table>
+
+             <input type="range" name="norm1" id="norm1" min="10" step="1" max="50" oninput="updateDescription(this)"   class="slider">
+           <center>      <p > Your guess from 1 (Very Socially Inappropriate) to 5 (Very Socially Appropriate):  </p></center>
+            <center><p id="description"> -  </p></center>
+         </div>
+            </div>
+            </div>
+
+    <br>
+
+
+     <div class="card bg-light m-3">
+       <center> <h4> How appropriate is to take more than {{ mean }} points in this situation?</h4></center>
+ {{ if case < 4 }}
+<br>
+ <center><h6> Remember that 100 points will be subtracted from Participant 1 as points were taken.</h6></center>
+<br>
+{{ endif }}
+     <div class="form-group required">
+<table class="table table-hover table-striped table-responsive mx-auto ">
+    <thead>
+
+
+        <tr>
+            <th>"Very Socially Inappropriate"</th>
+            <th>“Somewhat Socially Inappropriate”</th>
+            <th> "Neutral"</th>
+            <th>“Somewhat Socially Appropriate”</th>
+            <th>“Very Socially Appropriate”</th>
+        </tr>
+</table>
+
+         <input type="range" name="norm2" id="norm2" min="10" step="1" max="50" oninput="updateDescription2(this)"   class="slider">
+       <center>      <p > Your guess from 1 (Very Socially Inappropriate) to 5 (Very Socially Appropriate):  </p></center>
+        <center><p id="description2"> -  </p></center>
+     </div>
+        </div>
+        </div>
+    <div class="form-group required">
+<table class="table table-hover table-striped table-responsive mx-auto ">
+        <tr></tr>
+
+
+    <tbody>
+
+
+
+
+
+
+    </tbody>
+</table>
+     </div>
+        </div>
+
+
+
+<center>
+    {{ next_button }}
+</center>
+  </div>
+        </div>
+
+  </div>
+ <br>
+         <br>
+<div>
+       <center> <button type="button" onclick="show()">
+    Instructions
+</button>
+</center>
+    <div id="inst" style="display: none">
+    {{ include Constants.instructions_template }}
+    </div>
+    <br>
+</div>
+<div>
+    <center><button type="button" onclick="show2()">
+    Contact
+</button>
+</center>
+    <div id="inst2" style="display: none">
+            {{ include Constants.contact }}
+    </div>
+</div>
+
+{{ endblock }}
+
+{{ block script}}
+<script>
+
+
+let description = document.getElementById('description');
+let description2 = document.getElementById('description2');
+function updateDescription(input) {
+    let take = parseInt(input.value)/10;
+    description.innerText = `${take}`;
+
+}
+
+function updateDescription2(input) {
+    let take = parseInt(input.value)/10;
+    description2.innerText = `${take}`;
+
+}
+
+function show() {
+  var x = document.getElementById("inst");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+function show2() {
+  var x = document.getElementById("inst2");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+
+
+</script>
+
+
+{{endblock}}
+
+

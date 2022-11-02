@@ -1,0 +1,85 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+    Instructions Check
+{% endblock %}
+
+{% block content %}
+
+<p>If necessary, you can look at the instructions again below</p>
+<br>
+<strong>(Question 1)</strong> Consider the following case:
+<br>
+{% include Constants.example2 %}
+<br>
+<br>
+
+<br>
+
+Suppose that Individual 1 takes 300 points from Individual 2.
+<br>
+        {% formfield player.ans1 %}
+
+<br>
+
+<strong>(Question 2)</strong> Consider the following case:
+<br>
+{% include Constants.example %}
+<br>
+
+Consider that Individual 1 takes 700 points from Individual 2.
+<br>
+
+    {% formfield player.ans2 %}
+
+<center>
+    {{ next_button }}
+</center>
+
+
+<div>
+       <center> <button type="button" onclick="show()">
+    Instructions
+</button>
+</center>
+    <div id="inst" style="display: none">
+    {{ include Constants.instructions_template }}
+    </div>
+    <br>
+</div>
+<div>
+    <center><button type="button" onclick="show2()">
+    Contact
+</button>
+</center>
+    <div id="inst2" style="display: none">
+            {{ include Constants.contact }}
+    </div>
+</div>
+
+{{ endblock }}
+
+{{ block script}}
+<script>
+function show() {
+  var x = document.getElementById("inst");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+function show2() {
+  var x = document.getElementById("inst2");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+</script>
+
+{{endblock}}
+
+

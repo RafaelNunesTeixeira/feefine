@@ -1,0 +1,117 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+    Make Your choice
+{% endblock %}
+
+{% block content %}
+<input type="hidden" name="dictator" id="dictator" >
+<input type="hidden" name="receiver" id="receiver" >
+
+     <div class="card bg-light m-3">
+        <div class="card-body">
+<strong></strong> Consider the following case:
+<br>
+{% include Constants.case %}
+<br>
+{% include Constants.info %}
+<br>
+
+    <div>
+        <center>
+
+
+        <input type="range" name="decision" id="decision" min="0" step="10" max={{p2}} oninput="updateDescription(this)"   class="slider">
+
+            <p id="description"> You start with: {{p1}} </p>
+            <p id="description2"> Participant 2 starts with: {{p2}} </p>
+            <p id="description3">  </p>
+        </center>
+        </div>
+
+
+  <div id="go" style="display: none">
+
+<center>
+    {{ next_button }}
+</center>
+  </div>
+        </div>
+
+  </div>
+ <br>
+         <br>
+<div>
+       <center> <button type="button" onclick="show()">
+    Instructions
+</button>
+</center>
+    <div id="inst" style="display: none">
+    {{ include Constants.instructions_template }}
+    </div>
+    <br>
+</div>
+<div>
+    <center><button type="button" onclick="show2()">
+    Contact
+</button>
+</center>
+    <div id="inst2" style="display: none">
+            {{ include Constants.contact }}
+    </div>
+</div>
+
+{{ endblock }}
+
+{{ block script}}
+<script>
+
+
+let description = document.getElementById('description');
+let description2 = document.getElementById('description2');
+function updateDescription(input) {
+    let keep = js_vars.jvp1 - 100 + parseInt(input.value);
+    let take = parseInt(input.value)
+    let give = js_vars.jvp1 + js_vars.jvp2 - 100 - keep;
+    description.innerText = `You are taking ${take} points, keeping a total of: ${keep} points`;
+    description2.innerText = `Participant 2 is keeping: ${give} points`;
+    description3.innerText = `You are taking more than 0 points: 100 points are being subtracted`;
+    var x = document.getElementById("go");
+    x.style.display = "block"
+   document.getElementById('receiver').value= give
+   document.getElementById('dictator').value= keep
+    if (give == js_vars.jvp2 ){
+       keep2=keep+100;
+       description.innerText = `You are taking ${take} points, keeping a total of: ${keep2} points`;
+       description3.innerText = ``;
+       document.getElementById('receiver').value= give
+       document.getElementById('dictator').value= keep2
+       }
+}
+
+
+function show() {
+  var x = document.getElementById("inst");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+function show2() {
+  var x = document.getElementById("inst2");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+
+
+</script>
+
+
+{{endblock}}
+
+

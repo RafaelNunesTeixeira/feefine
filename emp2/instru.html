@@ -1,0 +1,74 @@
+
+        {{ block title }}Instructions{{ endblock }}
+
+{{ block content }}
+        <div class="card bg-light m-3">
+        <div class="card-body">
+    <p>
+    <strong>Expectations:</strong>
+</p>
+
+<p>
+For this task, we want to understand your expectations of the other participants.
+    </p>
+
+During this task, you will evaluate various situations that you and the other participants interacted in.
+    </p>
+<p>
+One of those situations will be randomly drawn for actual payment. You can earn 100 extra points if you guess correctly the average answer of the other participants.
+</p>
+             <p> The closer your guess is to the average answer, the higher is your gain. 10 points are subtracted from each point your guess is away from the actual number (at most 100 points are subtracted). </p> </p>
+
+</div>
+</div>
+  <center>
+    {{ next_button }}
+</center>
+
+
+<div>
+    <center> <button type="button" onclick="show()">
+    Instructions
+</button>
+</center>
+    <div id="inst" style="display: none">
+    {{ include Constants.instructions_template }}
+    </div>
+    <br>
+    <br>
+</div>
+        <center>
+        <button type="button" onclick="show2()">
+    Contact
+</button>
+</center>
+    <div id="inst2" style="display: none">
+            {{ include Constants.contact }}
+    </div>
+
+{{ endblock }}
+
+{{block script}}
+<script>
+function show() {
+  var x = document.getElementById("inst");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+function show2() {
+  var x = document.getElementById("inst2");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+</script>
+
+
+{{ endblock }}
+
+
